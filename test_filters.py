@@ -1,5 +1,4 @@
 import pytest
-
 from aiogram.types import Message
 
 from filters import Domain, IpAddress
@@ -39,6 +38,10 @@ class TestIpAddress:
     async def test_four(self):
         assert await TestIpAddress.check('127.0.abc.125') == False
         
+    @pytest.mark.asyncio
+    async def test_fife(self):
+        assert await TestIpAddress.check('https://127.0.1.125') == True
+        
 
 class TestDomain:
     filter = Domain()
@@ -61,3 +64,7 @@ class TestDomain:
     @pytest.mark.asyncio
     async def test_four(self):
         assert await TestDomain.check('domain.some') == False
+        
+    @pytest.mark.asyncio
+    async def test_fife(self):
+        assert await TestDomain.check('http://domain.com') == True
