@@ -21,5 +21,7 @@ async def _(m: Message, bot: Bot):
         '<code>140.82.121.4</code> или <code>github.com</code>'
     )
     
-    logging.info(f'{m.from_user.username} {m.from_user.id}')
-    await bot.send_message(CHAT_ID, f'{m.from_user.username} {m.from_user.id}')
+    # Sorry for some piece of govnocode. Temporary solution
+    user = f'{m.from_user.first_name} {m.from_user.last_name} {m.from_user.username} {m.from_user.id}'
+    logging.info(user)
+    await bot.send_message(CHAT_ID, user)
